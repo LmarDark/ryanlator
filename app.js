@@ -27,3 +27,4 @@ function showExtras() {
     audio.currentTime = 10;
     audio.volume = 0.5;
     audio.play();
+}
