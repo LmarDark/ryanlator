@@ -10,7 +10,12 @@ function addToDisplay(value) {
 }
 
 function clearDisplay() {
-    display.value = "";
+    var display = document.getElementById("display");
+    if (display) {
+        display.value = "";
+    } else {
+        console.error("Elemento 'display' não encontrado.");
+    }
 }
 
 function showExtras() {
