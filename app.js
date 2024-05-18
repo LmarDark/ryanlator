@@ -1,7 +1,12 @@
 let display = document.getElementById("display");
 
 function addToDisplay(value) {
-    display.value += value;
+    var display = document.getElementById("display");
+    if (display) {
+        display.value += value;
+    } else {
+        console.error("Elemento 'display' não encontrado.");
+    }
 }
 
 function clearDisplay() {
