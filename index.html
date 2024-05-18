@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Calculadora</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    
+    .calculator {
+        max-width: 300px;
+        margin-right: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    #display {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+    }
+    
+    button {
+        padding: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button:hover {
+        background-color: #e0e0e0;
+    }
+    
+    .clear {
+        grid-column: span 2;
+    }
+    
+    #extraImage {
+        max-width: 200px;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="addToDisplay('+')">+</button>
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="addToDisplay('-')">-</button>
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('*')">*</button>
+            <button onclick="addToDisplay('0')">0</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="showExtras()">=</button>
+            <button onclick="addToDisplay('/')">/</button>
+        </div>
+    </div>
+
+    <img src="nb7bl.jpg" alt="Imagem" id="extraImage" class="hidden">
+</div>
+
+<audio id="audio" src="nightcall.mp3"></audio>
+
+</body>
+<script>
+    let display = document.getElementById("display");
+
+    function addToDisplay(value) {
+        display.value += value;
+    }
+
+    function clearDisplay() {
+        display.value = "";
+    }
+
+    function showExtras() {
+        var img = document.getElementById("extraImage");
+        img.style.opacity = 0;
+        img.style.display = "block";
+        var fadeEffect = setInterval(function () {
+            if (!img.style.opacity) {
+                img.style.opacity = 0;
+            }
+            if (img.style.opacity < 1) {
+                img.style.opacity = parseFloat(img.style.opacity) + 0.1;
+            } else {
+                clearInterval(fadeEffect);
+            }
+        }, 300);
+
+        var audio = document.getElementById("audio");
+        audio.currentTime = 10;
+        audio.volume = 0.5;
+        audio.play();
+    }
+</script>
+</html>
